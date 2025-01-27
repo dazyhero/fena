@@ -53,8 +53,8 @@ This application simulates the process of sending a large number of emails. It i
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd email-queue-simulation
+   git clone github.com/dazyhero/fena
+   cd fena
    ```
 
 2. Create a .env file in the root directory and set the required environment variables:
