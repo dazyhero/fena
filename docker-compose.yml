@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  front-end:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    container_name: front-end
+    ports:
+      - "3000:3000" # Map front-end service to port 3000
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - back-end # Ensure the back-end starts first
+    networks:
+      - app-network
+
+  back-end:
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    container_name: back-end
+    ports:
+      - "3001:3001" # Map back-end service to port 3001
+    environment:
+      - NODE_ENV=production
+      - POSTGRES_URL=${POSTGRES_URL}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - SQS_URL=${SQS_URL}
+      - SQS_REGION=${SQS_REGION}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
