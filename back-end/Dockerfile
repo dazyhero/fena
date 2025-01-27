@@ -37,13 +37,6 @@ COPY --from=builder /app/dist ./dist
 
 # Set NODE_ENV
 ENV NODE_ENV=production
-ENV POSTGRES_URL=postgresql://queue_admin:securepassword@terraform-20250125165600320600000001.chq800c88yfr.eu-central-1.rds.amazonaws.com:5432/jobqueue?sslmode=no-verify
-ENV POSTGRES_HOST=terraform-20250125165600320600000001.chq800c88yfr.eu-central-1.rds.amazonaws.com
-ENV SQS_URL=https://sqs.eu-central-1.amazonaws.com/038235372620/email-jobs-queue
-ENV SQS_REGION=eu-central-1
-ENV AWS_SECRET_ACCESS_KEY=OyBiH4pl/FWIwC+VCkD31g9AArJbcS9Hrz80Esu4
-ENV AWS_ACCESS_KEY_ID=AKIAQRZYBPRGI7RAK5B2
-
 
 # Expose port
 EXPOSE 3001
